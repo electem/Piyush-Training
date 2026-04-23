@@ -2,10 +2,7 @@ package com.example.CrudOperation.controller;
 
 import com.example.CrudOperation.service.CSVService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/csv")
@@ -17,12 +14,9 @@ public class CSVController {
         this.csvService = csvService;
     }
 
-    @PostMapping("/import-url")
-    public ResponseEntity<String> importFromUrl(@RequestParam("url") String url) {
+    @PostMapping("/import")
+    public ResponseEntity<String> importCsv(@RequestParam String url) {
         csvService.importFromUrl(url);
-
-        System.out.println("===================");
-
-        return ResponseEntity.ok("CSV imported from URL successfully");
+        return ResponseEntity.ok("CSV import started successfully");
     }
 }
