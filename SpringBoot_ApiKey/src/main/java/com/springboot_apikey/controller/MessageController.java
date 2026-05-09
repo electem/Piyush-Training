@@ -26,3 +26,24 @@ public class MessageController {
         return messageService.getProtectedMessage();
     }
 }
+
+
+
+
+setBearerAuth()--> (you wrote “get baererAuth”) is a Spring helper method used to add a JWT token into the HTTP Authorization header.
+
+
+PdfWriter → writes data
+PdfDocument → manages PDF structure
+Document → where you add content (text, tables, etc.)	
+
+
+
+
+
+
+
+
+
+
+
