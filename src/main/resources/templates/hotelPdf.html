@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .hotel-info {
+            margin-bottom: 20px;
+        }
+
+        .images {
+            margin-top: 10px;
+        }
+
+        .images img {
+            width: 250px;
+            height: 180px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            background: #f2f2f2;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1 th:text="${hotel.name}">Hotel Name</h1>
+
+<div class="hotel-info">
+
+    <p>
+        <strong>Location:</strong>
+        <span th:text="${hotel.location}">Location</span>
+    </p>
+
+    <p>
+        <strong>Description:</strong>
+        <span th:text="${hotel.description}">Description</span>
+    </p>
+
+    <p>
+        <strong>Rating:</strong>
+        <span th:text="${hotel.rating}">Rating</span>
+    </p>
+
+</div>
+
+<h2>Hotel Images</h2>
+
+<div class="images">
+    <div th:if="${hotel.images != null}">
+        <div th:each="img : ${hotel.images}">
+            <img th:src="${img.imageUrl}" alt="Hotel Image" />
+        </div>
+    </div>
+</div>
+
+<h2>Rooms</h2>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>Room Number</th>
+        <th>Room Type</th>
+        <th>Price</th>
+        <th>Available</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="room : ${hotel.rooms}">
+
+        <td th:text="${room.roomNumber}">101</td>
+
+        <td th:text="${room.roomType}">Deluxe</td>
+
+        <td th:text="${room.price}">1000</td>
+
+        <td th:text="${room.available}">true</td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>
